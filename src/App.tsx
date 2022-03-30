@@ -2,11 +2,13 @@ import { Global } from '@emotion/react';
 
 import MainStyles from '@/styles';
 
+import { Game } from './features/game/routes/Game';
+
 function App() {
   return (
     <>
       <Global styles={MainStyles} />
-      <h1>Tinder for Cats!</h1>
+      <Game />
     </>
   );
 }

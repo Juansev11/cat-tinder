@@ -1,12 +1,14 @@
-import { spacing } from './units';
+import { Theme } from '@emotion/react';
 
 const white = '#fff';
-const black = '#111';
+const black = '#4A4A4A';
+const grey = '#9B9B9B';
 
 const palette = {
   common: {
     black,
     white,
+    grey,
   },
   primary: {
     main: '#0070F3',
@@ -18,20 +20,36 @@ const palette = {
     light: '#A7333F',
     contrastText: white,
   },
-  grey: {
-    100: '#EAEAEA',
-    200: '#C9C5C5',
-    300: '#888',
-    400: '#666',
-  },
 };
 
 const typography = {
-  fontFamily:
-    "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif",
+  fontSizes: {
+    xs: '0.694rem',
+    sm: '0.833rem',
+    base: '1rem',
+    md: '1.2rem',
+    lg: '1.44rem',
+    xl: '1.728rem',
+    xxl: '2.074rem',
+  },
 };
 
-export const theme = {
+const border = {
+  card: '1px solid rgba(0, 0, 0, 0.04);',
+};
+const borderRadius = {
+  round: '12px',
+  circle: '9999px',
+};
+
+const boxShadow = {
+  cards: '0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);',
+};
+
+export const theme: Theme = {
   palette,
-  typography
+  typography,
+  borderRadius,
+  boxShadow,
+  border,
 };

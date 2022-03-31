@@ -33,14 +33,15 @@ declare module '@emotion/react' {
       };
     };
     borderRadius: {
+      subtle: string;
       round: string;
       circle: string;
     };
     boxShadow: {
-      cards: string;
+      basic: string;
     };
     border: {
-      card: string;
+      basic: string;
     };
   }
 }

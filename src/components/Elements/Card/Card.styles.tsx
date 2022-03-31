@@ -24,8 +24,8 @@ export const CardContent = styled.section`
   padding: 0.75rem 1rem;
   flex-direction: column;
   background-color: ${(props) => props.theme.palette.common.white};
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: ${(props) => props.theme.boxShadow.cards};
+  border: ${(props) => props.theme.border.basic};
+  box-shadow: ${(props) => props.theme.boxShadow.basic};
 `;
 
 export const CardTitle = styled(Text)`

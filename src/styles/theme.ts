@@ -35,15 +35,16 @@ const typography = {
 };
 
 const border = {
-  card: '1px solid rgba(0, 0, 0, 0.04);',
+  basic: '1px solid rgba(0, 0, 0, 0.04);',
 };
 const borderRadius = {
+  subtle: '4px',
   round: '12px',
   circle: '9999px',
 };
 
 const boxShadow = {
-  cards: '0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);',
+  basic: '0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);',
 };
 
 export const theme: Theme = {

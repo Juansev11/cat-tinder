@@ -18,6 +18,7 @@ export const InputWrapper = styled.div`
 
 export const Input = styled.input`
   border: 1px solid ${(props) => props.theme.palette.primary.main};
+  border-radius: ${(props) => props.theme.borderRadius.round};
   background: none;
   height: 100%;
 `;

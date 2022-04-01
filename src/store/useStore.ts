@@ -3,9 +3,9 @@ import create from 'zustand';
 import { createConfigSlice } from '@/features/config/stores/createConfigSlice';
 import { ConfigSlice } from '@/features/config/types/Config';
 
-export type MyState = ConfigSlice;
+export type StoreState = ConfigSlice;
 
-const useStore = create<MyState>((set) => ({
+const useStore = create<StoreState>((set) => ({
   ...createConfigSlice(set),
 }));
 

@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { useCountdown } from '@/hooks/useCountdown';
+import useStore, { StoreState } from '@/store/useStore';
 
 import {
   Countdown,
@@ -13,19 +14,19 @@ import {
 
 type GameCountdownProps = React.ComponentPropsWithoutRef<'div'>;
 
-const FULL_DASH_ARRAY = 283;
-const TIME_LIMIT = 60;
+const selectedSecondsSelector = (state: StoreState) => state.selectedSeconds;
 
 export const GameCountdown: React.FC<GameCountdownProps> = () => {
-  const countdown = useCountdown(60);
+  const selectedSeconds = useStore(selectedSecondsSelector);
+  const countdown = useCountdown(selectedSeconds);
 
   const calculateTimeFraction = useCallback(() => {
-    const rawTimeFraction = countdown / TIME_LIMIT;
-    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
-  }, [countdown]);
+    const rawTimeFraction = countdown / selectedSeconds;
+    return rawTimeFraction - (1 / selectedSeconds) * (1 - rawTimeFraction);
+  }, [countdown, selectedSeconds]);
 
   const circleDasharray = useMemo(
-    () => `${(calculateTimeFraction() * FULL_DASH_ARRAY).toFixed(0)} 283`,
+    () => `${(calculateTimeFraction() * 283).toFixed(0)} 283`,
     [calculateTimeFraction]
   );
 

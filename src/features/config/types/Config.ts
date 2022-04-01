@@ -1,5 +1,5 @@
 export type ConfigSlice = {
-  selectedSeconds: string;
+  selectedSeconds: number;
   setSelectedSeconds: (seconds: string) => void;
   currentScreen: ConfigScreens;
   setCurrentScreen: (screen: ConfigScreens) => void;

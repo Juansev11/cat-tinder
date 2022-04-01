@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { Button, Card } from '@/components/Elements';
 import { CardContent } from '@/components/Elements/Card/Card.styles';
 import { InputField } from '@/components/Form/InputField/InputField';
-import useStore, { MyState } from '@/store/useStore';
+import useStore, { StoreState } from '@/store/useStore';
 
 import { ConfigScreens } from '../../types/Config';
 
@@ -11,9 +11,9 @@ import { ConfigurationContainer } from './ConfigurationMenu.styles';
 
 type ConfigurationMenuProps = React.ComponentPropsWithoutRef<'div'>;
 
-const setSelectedSecondsSelector = (state: MyState) => state.setSelectedSeconds;
-const setCurrentScreenSelector = (state: MyState) => state.setCurrentScreen;
-const selectedSecondsSelector = (state: MyState) => state.selectedSeconds;
+const setSelectedSecondsSelector = (state: StoreState) => state.setSelectedSeconds;
+const setCurrentScreenSelector = (state: StoreState) => state.setCurrentScreen;
+const selectedSecondsSelector = (state: StoreState) => state.selectedSeconds;
 
 export const ConfigurationMenu: React.FC<ConfigurationMenuProps> = () => {
   const setSelectedSeconds = useStore(setSelectedSecondsSelector);

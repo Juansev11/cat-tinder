@@ -1,23 +1,23 @@
 import { ContentLayout } from '@/components/Layout';
 import { ConfigurationMenu } from '@/features/config/components/ConfigurationMenu/ConfigurationMenu';
-import useFetch from '@/hooks/useFetch';
+import { ConfigScreens } from '@/features/config/types/Config';
+import useStore, { StoreState } from '@/store/useStore';
+
+import { GameCards } from '../components/GameCards/GameCards';
 
 type GameProps = React.ComponentPropsWithoutRef<typeof ContentLayout>;
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+const currentScreenSelector = (state: StoreState) => state.currentScreen;
 
 export const Game: React.FC<GameProps> = () => {
-  useFetch<Post[]>('https://api.thecatapi.com/v1/images/search?limit=5&category_ids=[1,2,3,4,5]');
+  // useFetch<Post[]>('https://api.thecatapi.com/v1/images/search?limit=5&category_ids=[1,2,3,4,5]');
+  const currentScreen = useStore(currentScreenSelector);
 
   return (
     <ContentLayout>
       <h1>Tinder for Cats!</h1>
-      <ConfigurationMenu />
+      {currentScreen === ConfigScreens.START && <ConfigurationMenu />}
+      {currentScreen === ConfigScreens.GAME && <GameCards />}
     </ContentLayout>
   );
 };

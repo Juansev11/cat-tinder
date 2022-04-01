@@ -21,6 +21,14 @@ export const GameScreens = () => {
     }
   }, [currentScreen, fetchMore]);
 
+  if (isLoading) {
+    return (
+      <Text data-testid="loading" variant="lg" weight="bold">
+        Loading...
+      </Text>
+    );
+  }
+
   if (!isLoading && !data) {
     return (
       <>

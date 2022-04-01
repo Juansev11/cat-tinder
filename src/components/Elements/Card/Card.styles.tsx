@@ -32,6 +32,7 @@ export const CardContent = styled.section`
   justify-content: center;
   align-items: center;
   border-radius: 0;
+  height: 5rem;
   padding: 0.75rem 1rem;
   background-color: ${(props) => props.theme.palette.common.white};
   border: ${(props) => props.theme.border.basic};

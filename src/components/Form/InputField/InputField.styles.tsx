@@ -22,6 +22,7 @@ export const Input = styled.input`
   background: none;
   height: 2rem;
   width: 100%;
+  padding-left: 0.5rem;
 `;
 
 export const InputLabel = styled.label`

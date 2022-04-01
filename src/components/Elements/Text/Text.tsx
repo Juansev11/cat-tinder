@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { TextFontVariants, TextWeightVariants } from '@/typings/emotion';
 
 type TextProps = {
-  variant?: TextFontVariants;
+  variant: TextFontVariants;
   weight?: TextWeightVariants;
 } & React.ComponentPropsWithoutRef<'p'>;
 

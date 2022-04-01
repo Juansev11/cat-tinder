@@ -23,7 +23,7 @@ const getPropsByVariant = (variant: ButtonVariants) => {
   const solidVariantProps = {
     main: {
       backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
+      color: theme.palette.common.white,
     },
   };
 

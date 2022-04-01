@@ -2,15 +2,6 @@ import '@emotion/react';
 
 type ColorPalette = {
   main: string;
-  light: string;
-  contrastText: string;
-};
-
-type ColorRange = {
-  100: string;
-  200: string;
-  300: string;
-  400: string;
 };
 
 type TextWeightVariants = 'light' | 'normal' | 'bold';
@@ -25,7 +16,6 @@ declare module '@emotion/react' {
         grey: string;
       };
       primary: ColorPalette;
-      error: ColorPalette;
     };
     typography: {
       fontSizes: {

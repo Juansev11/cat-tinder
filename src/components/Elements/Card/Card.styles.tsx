@@ -20,9 +20,10 @@ export const CardContent = styled.section`
   right: 0;
   bottom: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.round};
   padding: 0.75rem 1rem;
-  flex-direction: column;
   background-color: ${(props) => props.theme.palette.common.white};
   border: ${(props) => props.theme.border.basic};
   box-shadow: ${(props) => props.theme.boxShadow.basic};

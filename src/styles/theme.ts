@@ -11,14 +11,7 @@ const palette = {
     grey,
   },
   primary: {
-    main: '#0070F3',
-    light: '#146DD6',
-    contrastText: white,
-  },
-  error: {
-    main: '#A51C30',
-    light: '#A7333F',
-    contrastText: white,
+    main: '#b197ff',
   },
 };
 

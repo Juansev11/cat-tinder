@@ -7,6 +7,7 @@ import {
   CountdownCircle,
   CountdownCircleElapsed,
   CountdownCircleRemaining,
+  CountdownRemaining,
   CountdownSVG,
 } from './GameCountdown.styles';
 
@@ -45,6 +46,9 @@ export const GameCountdown: React.FC<GameCountdownProps> = () => {
           ></CountdownCircleRemaining>
         </CountdownCircle>
       </CountdownSVG>
+      <CountdownRemaining variant="lg" weight="bold">
+        {countdown}
+      </CountdownRemaining>
     </Countdown>
   );
 };

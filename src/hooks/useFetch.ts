@@ -32,7 +32,6 @@ function useFetch<T = unknown>(url = '', options?: RequestInit): FetchResponse<T
       case 'loading':
         return { ...state, isLoading: true };
       case 'fetched':
-        console.log('fetched', { ...state, data: action.payload, isLoading: false });
         return { ...state, data: action.payload, isLoading: false };
       case 'error':
         return { ...state, error: action.payload, isLoading: false };

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Text } from '@/components/Elements';
+import { Button, Text } from '@/components/Elements';
 import { ConfigurationMenu } from '@/features/config/components/ConfigurationMenu/ConfigurationMenu';
 import { ConfigScreens } from '@/features/config/types/Config';
 import useStore, { StoreState } from '@/store/useStore';
@@ -23,9 +23,12 @@ export const GameScreens = () => {
 
   if (!isLoading && !data) {
     return (
-      <Text variant="lg" weight="bold">
-        Sorry for the inconvenience, but the game cannot be played
-      </Text>
+      <>
+        <Text variant="lg" weight="bold">
+          There seems to be an error, please try again.
+        </Text>
+        <Button onClick={() => window.location.reload()}>Retry</Button>
+      </>
     );
   }
 

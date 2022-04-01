@@ -5,13 +5,18 @@ import { Text } from '../Text/Text';
 export const CardContainer = styled.article`
   position: relative;
   display: flex;
+  align-self: stretch;
+  aspect-ratio: 3 / 4;
 `;
 
 export const CardImage = styled.img`
+  flex: 1;
+  background-color: ${(props) => props.theme.palette.common.white};
   aspect-ratio: 3 / 4;
   border-radius: ${(props) => props.theme.borderRadius.round};
   object-position: center;
   object-fit: cover;
+  width: 100%;
 `;
 
 export const CardContent = styled.section`
@@ -27,6 +32,7 @@ export const CardContent = styled.section`
   background-color: ${(props) => props.theme.palette.common.white};
   border: ${(props) => props.theme.border.basic};
   box-shadow: ${(props) => props.theme.boxShadow.basic};
+  z-index: 9999;
 `;
 
 export const CardTitle = styled(Text)`

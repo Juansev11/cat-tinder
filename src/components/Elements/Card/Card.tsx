@@ -1,12 +1,7 @@
-import { CardContainer, CardImage } from './Card.styles';
+import { CardContainer } from './Card.styles';
 
-type CardProps = {
-  image: string;
-} & React.ComponentPropsWithoutRef<'article'>;
+type CardProps = React.ComponentPropsWithoutRef<'article'>;
 
-export const Card: React.FC<CardProps> = ({ image, children, ...props }) => (
-  <CardContainer {...props}>
-    <CardImage src={image} alt="" />
-    {children}
-  </CardContainer>
+export const Card: React.FC<CardProps> = ({ children, ...props }) => (
+  <CardContainer {...props}>{children}</CardContainer>
 );

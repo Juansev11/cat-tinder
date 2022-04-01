@@ -1,31 +1,41 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
 
-interface State<T> {
-  data?: T;
+import { API_AUTHORIZATION_TOKEN, API_URL } from '@/config';
+
+interface FetchResponse<T> {
+  data?: T[];
   error?: Error;
+  isLoading?: boolean;
+  fetchMore: () => void;
 }
 
 type Action<T> =
   | { type: 'loading' }
-  | { type: 'fetched'; payload: T }
+  | { type: 'fetched'; payload: T[] }
   | { type: 'error'; payload: Error };
 
-function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
+function useFetch<T = unknown>(url = '', options?: RequestInit): FetchResponse<T> {
   const cancelRequest = useRef<boolean>(false);
 
-  const initialState: State<T> = {
+  const initialState: FetchResponse<T> = {
     error: undefined,
     data: undefined,
+    isLoading: false,
+    fetchMore: () => {},
   };
 
-  const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
+  const fetchReducer = (
+    state: FetchResponse<T> = initialState,
+    action: Action<T>
+  ): FetchResponse<T> => {
     switch (action.type) {
       case 'loading':
-        return { ...initialState };
+        return { ...state, isLoading: true };
       case 'fetched':
-        return { ...initialState, data: action.payload };
+        console.log('fetched', { ...state, data: action.payload, isLoading: false });
+        return { ...state, data: action.payload, isLoading: false };
       case 'error':
-        return { ...initialState, error: action.payload };
+        return { ...state, error: action.payload, isLoading: false };
       default:
         return state;
     }
@@ -33,39 +43,45 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
 
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
-  useEffect(() => {
-    if (!url) return;
+  const fetchData = useCallback(async () => {
+    dispatch({ type: 'loading' });
 
-    const fetchData = async () => {
-      dispatch({ type: 'loading' });
-
-      try {
-        const response = await fetch(url, {
-          ...options,
-          'x-api-key': '3314d84d-1e34-43fa-982b-1c1cfa370e35',
-        } as RequestInit);
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-
-        const data = (await response.json()) as T;
-        if (cancelRequest.current) return;
-
-        dispatch({ type: 'fetched', payload: data });
-      } catch (error) {
-        if (cancelRequest.current) return;
-
-        dispatch({ type: 'error', payload: error as Error });
+    try {
+      const response = await fetch(`${API_URL}${url}`, {
+        ...options,
+        'x-api-key': API_AUTHORIZATION_TOKEN,
+      } as RequestInit);
+      if (!response.ok) {
+        throw new Error(response.statusText);
       }
-    };
 
-    void fetchData();
+      const data = (await response.json()) as T[];
+      if (cancelRequest.current) return;
+
+      return data;
+    } catch (error) {
+      if (cancelRequest.current) return;
+      dispatch({ type: 'error', payload: error as Error });
+    }
+  }, [url, options, dispatch]);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const response = (await fetchData()) as T[];
+      dispatch({ type: 'fetched', payload: response });
+    };
+    fetchInitialData();
     return () => {
       cancelRequest.current = true;
     };
-  }, [url, options]);
+  }, [fetchData, dispatch]);
 
-  return state;
+  const fetchMore = useCallback(async () => {
+    const response = (await fetchData()) as T[];
+    dispatch({ type: 'fetched', payload: response });
+  }, [fetchData, dispatch]);
+
+  return { ...state, fetchMore };
 }
 
 export default useFetch;

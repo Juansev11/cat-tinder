@@ -8,5 +8,5 @@ export type ConfigSlice = {
 export enum ConfigScreens {
   START = 'START',
   GAME = 'GAME',
-  STATS = 'STATS',
+  RESULTS = 'RESULTS',
 }

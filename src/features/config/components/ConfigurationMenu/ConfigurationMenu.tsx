@@ -38,7 +38,7 @@ export const ConfigurationMenu: React.FC<ConfigurationMenuProps> = ({ initialIma
       <CardImage src={initialImage} />
       <CardContent>
         <ConfigurationContainer>
-          <Button onClick={handleStartGameClick}>Start Game</Button>
+          <Button onClick={handleStartGameClick}>Start</Button>
           <InputField
             label="Seconds"
             id="seconds"

@@ -20,7 +20,8 @@ export const Input = styled.input`
   border: 1px solid ${(props) => props.theme.palette.primary.main};
   border-radius: ${(props) => props.theme.borderRadius.round};
   background: none;
-  height: 100%;
+  height: 2rem;
+  width: 100%;
 `;
 
 export const InputLabel = styled.label`

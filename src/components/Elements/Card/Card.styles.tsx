@@ -7,13 +7,17 @@ export const CardContainer = styled.article`
   display: flex;
   align-self: stretch;
   aspect-ratio: 3 / 4;
+  background-color: ${(props) => props.theme.palette.common.white};
+  overflow: hidden;
+  border-radius: 0;
+  @media only screen and (min-width: 30rem) {
+    border-radius: ${(props) => props.theme.borderRadius.round};
+  }
 `;
 
 export const CardImage = styled.img`
   flex: 1;
-  background-color: ${(props) => props.theme.palette.common.white};
   aspect-ratio: 3 / 4;
-  border-radius: ${(props) => props.theme.borderRadius.round};
   object-position: center;
   object-fit: cover;
   width: 100%;
@@ -27,12 +31,15 @@ export const CardContent = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${(props) => props.theme.borderRadius.round};
+  border-radius: 0;
   padding: 0.75rem 1rem;
   background-color: ${(props) => props.theme.palette.common.white};
   border: ${(props) => props.theme.border.basic};
   box-shadow: ${(props) => props.theme.boxShadow.basic};
   z-index: 9999;
+  @media only screen and (min-width: 30rem) {
+    border-radius: ${(props) => props.theme.borderRadius.round};
+  }
 `;
 
 export const CardTitle = styled(Text)`

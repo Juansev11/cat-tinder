@@ -15,4 +15,5 @@ export type GameSlice = {
   skips: number;
   total: number;
   addToListByKey: (gameListKey: GameListKey) => void;
+  reset: () => void;
 };

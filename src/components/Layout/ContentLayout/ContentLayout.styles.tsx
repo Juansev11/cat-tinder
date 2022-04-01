@@ -5,7 +5,9 @@ export const ContentLayoutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 24rem;
   margin: 0 auto;
   gap: 2rem;
+  @media only screen and (min-width: 30rem) {
+    max-width: 24rem;
+  }
 `;

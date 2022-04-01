@@ -1,5 +1,6 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useEffect } from 'react';
 
+import { ConfigScreens } from '@/features/config/types/Config';
 import { useCountdown } from '@/hooks/useCountdown';
 import useStore, { StoreState } from '@/store/useStore';
 
@@ -15,9 +16,11 @@ import {
 type GameCountdownProps = React.ComponentPropsWithoutRef<'div'>;
 
 const selectedSecondsSelector = (state: StoreState) => state.selectedSeconds;
+const setCurrentScreenSelector = (state: StoreState) => state.setCurrentScreen;
 
 export const GameCountdown: React.FC<GameCountdownProps> = () => {
   const selectedSeconds = useStore(selectedSecondsSelector);
+  const setCurrentScreen = useStore(setCurrentScreenSelector);
   const countdown = useCountdown(selectedSeconds);
 
   const calculateTimeFraction = useCallback(() => {
@@ -29,6 +32,12 @@ export const GameCountdown: React.FC<GameCountdownProps> = () => {
     () => `${(calculateTimeFraction() * 283).toFixed(0)} 283`,
     [calculateTimeFraction]
   );
+
+  useEffect(() => {
+    if (countdown === 0) {
+      setCurrentScreen(ConfigScreens.RESULTS);
+    }
+  }, [countdown, setCurrentScreen]);
 
   return (
     <Countdown>

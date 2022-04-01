@@ -9,7 +9,7 @@ export const createConfigSlice = (set: SetState<StoreState>) => ({
   setCurrentScreen: (currentScreen: ConfigScreens) => {
     set((state) => ({ ...state, currentScreen }));
   },
-  selectedSeconds: 0,
+  selectedSeconds: 60,
   setSelectedSeconds: (selectedSeconds: string) => {
     set((state) => ({ ...state, selectedSeconds: Number(selectedSeconds) }));
   },

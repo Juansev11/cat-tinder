@@ -7,9 +7,9 @@ import { GameSlice } from '@/features/game/types/Game';
 
 export type StoreState = ConfigSlice & GameSlice;
 
-const useStore = create<StoreState>((set) => ({
+const useStore = create<StoreState>((set, get) => ({
   ...createConfigSlice(set),
-  ...createGameSlice(set),
+  ...createGameSlice(set, get),
 }));
 
 export default useStore;

@@ -22,7 +22,7 @@ export const StyledText = styled.p<TextProps>`
   font-weight: ${(props) => props.weight && textWeights[props.weight]};
 `;
 
-type TextPropsWithStyled = React.ComponentPropsWithRef<typeof StyledText>;
+type TextPropsWithStyled = React.ComponentPropsWithoutRef<typeof StyledText>;
 
 export const Text: React.FC<TextPropsWithStyled> = ({ children, ...props }) => {
   return <StyledText {...props}>{children}</StyledText>;

@@ -4,7 +4,7 @@ import { Skip } from '@/components/Icons/Skip';
 
 import { GameActionsContainer, GameActionsButton } from './GameActions.styles';
 
-type GameActionsProps = React.ComponentPropsWithRef<typeof GameActionsContainer>;
+type GameActionsProps = React.ComponentPropsWithoutRef<typeof GameActionsContainer>;
 
 export const GameActions: React.FC<GameActionsProps> = () => {
   return (

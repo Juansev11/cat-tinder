@@ -11,7 +11,7 @@ import {
   CountdownSVG,
 } from './GameCountdown.styles';
 
-type GameCountdownProps = React.ComponentPropsWithRef<'div'>;
+type GameCountdownProps = React.ComponentPropsWithoutRef<'div'>;
 
 const FULL_DASH_ARRAY = 283;
 const TIME_LIMIT = 60;

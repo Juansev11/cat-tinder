@@ -17,13 +17,13 @@ const getPropsByVariant = (variant: ButtonVariants) => {
       backgroundColor: theme.palette.common.white,
       borderRadius: theme.borderRadius.circle,
     },
-    hover: { backgroundColor: '#c5c5c54d' },
   };
 
   const solidVariantProps = {
     main: {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
+      borderRadius: theme.borderRadius.round,
     },
   };
 
@@ -40,15 +40,15 @@ export const Button = styled('button')<ButtonProps>(({ variant = 'solid' }) => {
 
   return {
     border: 0,
-    borderRadius: '1.7rem',
     margin: 0,
     fontWeight: 'bold',
     cursor: 'pointer',
-    padding: '1rem 3rem',
+    padding: '0.75rem 2rem',
     transition: 'background-color 0.5s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontSize: '1.25rem',
     ...(propsByVariant && propsByVariant.main),
   };
 });
